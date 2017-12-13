@@ -1,0 +1,62 @@
+﻿@model Domain.Entities.Image
+
+@{
+    ViewBag.Title = "Info";
+}
+
+<div class="col-xs-12 col-sm-6 col-lg-4">
+    <h2>Info</h2>
+</div>
+
+<h1 id="main_title">
+    @Model.Title 
+    
+    @if (bool.Parse(TempData["IsAdmin"].ToString()))
+    {
+        <button type="submit" class="pull-right btn btn-warning " onclick="location.href='@Url.Action("Delete", "Home", new {Model.Id})'" style="margin: 8px">Delete</button>
+        <button type="submit" class="pull-right btn btn-success " onclick="location.href='@Url.Action("Edit", "Home", new {Model.Id})'"style="margin: 8px">Edit</button>
+    }
+</h1>
+
+
+<br />
+<div class="col-xs-12 col-sm-6 col-lg-4">
+    <a href="@Url.Action("GetBigImage", "Home", new {Id = Model.Id})" data data-lightbox="roadtrip">
+        <img class="img-thumbnail" src="@Url.Action("GetSmallImage", new {id = @Model.Id})" style="width: 300px; height: 300px;" />
+    </a>
+</div>
+<br /><br />
+
+<hr />
+
+<h2>
+    Description: @Model.Description
+</h2>
+<br /><br />
+
+<div>
+    <h2>
+
+        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            <div class="col-xs-3 col-sm-2 col-lg-2 label-warning text-center">
+                Price: @Model.Price $
+            </div>
+        }
+        else
+        {
+            <br />
+            <button type="submit" class="pull-left btn btn-success col-lg-offset-1 col-sm-offset-1" onclick="location.href='@Url.Action("Login", "Account")'">Login to view price</button>
+            <br />
+        }
+
+    </h2><br />
+
+
+    @*@if (ViewBag.IsValid == false)
+        {
+            @Html.Partial("ModalBidOn", Model);
+        }*@
+
+</div>
+

@@ -1,0 +1,47 @@
+﻿@using ImageGallery.Html_helpers
+@model ImageGallery.Models.ImageHomeViewModel
+
+<div id="listBlock">
+    <br />
+    <div class="container marketing">
+
+        <div class="row">
+
+            @{ int counter = 0; }
+
+            @foreach (var p in @Model.Images)
+            {
+                <div class="col-xs-12 col-sm-6 col-lg-4 image_handler image_handler-@counter">
+                    <a href="@Url.Action("GetBigImage", "Home", new {Id = p.Id})" data data-lightbox="roadtrip">
+                        <img class="img-thumbnail" src="@Url.Action("GetSmallImage", new {id = p.Id})" style="width: 300px; height: 300px;" />
+                    </a>
+                    <h2>@p.Title</h2>
+                    <p>
+                        <a class="btn btn-default" href="@Url.Action("Info", "Home",new {id = p.Id})" role="button">View details &raquo;</a>
+                    </p>
+                </div>
+
+                counter++;
+            }
+
+        </div>
+    </div>
+
+    @*<ul class="pager">
+        @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+        {
+            <li class="btn-block">
+                @Ajax.ActionLink(i.ToString(), "List", new { page = i }, new AjaxOptions()
+           {
+               UpdateTargetId = "listBlock",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "Get"
+           })
+            </li>
+        }
+    </ul>*@
+
+    <div class="btn-group col-md-offset-10 col-lg-offset-10 col-sm-offset-4 col-xs-offset-4">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+        </div>
+</div>

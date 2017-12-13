@@ -1,0 +1,39 @@
+﻿<a href="#myModalBox" class="pull-right btn btn-primary"
+   style="margin-right: 20px; margin-top: 9px; padding-right: 20px; padding-left: 20px; "
+   data-toggle="modal">Upload</a>
+<div id="myModalBox" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <div class="modal-body">
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1 align="center">Upload a new photo</h1>
+                    <hr />
+
+                    @Html.TextArea("Title", new { rows = 3, @class = "form-control", placeholder = "Title of the picture", style = "margin-top: 2%; max-width: 313px; align: center" })
+
+                    <br />
+
+                    @Html.TextArea("Description", new { rows = 3, @class = "form-control", placeholder = "Description", style = "margin-top: 2%; max-width: 313px; align: center" })
+
+                    <br />
+
+                    @Html.TextArea("Price", new { rows = 3, @class = "form-control", placeholder = "Price", style = "margin-top: 2%; max-width: 313px; align: center" })
+
+                    <br />
+
+                    <div class="form-group btn btn-default text-center ">
+                        <input type="file" name="Image" value="Select a file" />
+                    </div>
+
+                    <br />
+                    <br />
+                    <div class="row">
+                        <button type="submit" class="btn btn-success text-center">Upload</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h1 align="center">Upload a new photo</h1>
+    <hr />
+
+    <div style="margin-left: 520px;">
+        @Html.TextArea("Title", new { rows = 3, @class = "form-control", placeholder = "Title", style = "margin-top: 2%; max-width: 313px; align: center" })
+        @Html.TextArea("Description", new { rows = 3, @class = "form-control", placeholder = "Description", style = "margin-top: 2%; max-width: 313px; align: center" })
+        @Html.TextArea("Price", new { rows = 3, @class = "form-control", placeholder = "Price", style = "margin-top: 2%; max-width: 313px; align: center" })
+        <br />
+        <br />
+        <div class="form-group btn btn-default text-center ">
+            <input type="file" name="Image" value="Select a file" />
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <button type="submit" class="btn btn-success text-center">Upload</button>
+        </div>
+    </div>
+}
+

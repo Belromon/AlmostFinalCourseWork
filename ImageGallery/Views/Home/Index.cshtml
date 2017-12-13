@@ -1,0 +1,9 @@
+﻿@using ImageGallery.Html_helpers
+@model ImageGallery.Models.ImageHomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.Partial("_Carousel")
+
+@Html.Partial("List", Model)

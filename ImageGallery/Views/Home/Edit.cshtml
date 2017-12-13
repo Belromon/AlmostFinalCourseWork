@@ -1,0 +1,26 @@
+﻿@model Domain.Entities.Image
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h1 align="center">Edit a new photo</h1>
+    <hr />
+
+    <div style="margin-left: 520px;">
+        @Html.TextArea("Title", new { rows = 3, @class = "form-control", placeholder = @Model.Id, style = "margin-top: 2%; max-width: 313px; align: center" })
+        @Html.TextArea("Description", new { rows = 3, @class = "form-control", placeholder =@Model.Description, style = "margin-top: 2%; max-width: 313px; align: center" })
+        @Html.TextArea("Price", new { rows = 3, @class = "form-control", placeholder = @Model.Price, style = "margin-top: 2%; max-width: 313px; align: center" })
+        <br />
+        <br />
+        <div class="row">
+            <button type="submit" class="btn btn-success text-center">Upload</button>
+        </div>
+    </div>
+}
+
